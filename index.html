@@ -243,35 +243,34 @@
         }
         
         /* Right Content Section */
-        
-		.content-left {
-			position: absolute;
-			right: 80px;
-			top: 50%;
-			transform: translateY(-50%);
-			z-index: 10;
-			max-width: 600px;
-			text-align: right;
-		}
+        .content-left {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            max-width: 700px;
+            text-align: center;
+        }
         
         .main-title {
-			font-size: 46px;
-			font-weight: 700;
-			color: #ffffff;
-			margin-bottom: 15px;
-			letter-spacing: 0.8px;
-			line-height: 1.2;
-		}
+            font-size: 52px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
 
         .main-title .animated-text {
-			background: linear-gradient(90deg, #ff6b6b 0%, #feca57 25%, #48dbfb 50%, #0abde3 75%, #ff9ff3 100%);
-			background-size: 200% 100%;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-			animation: colorShift 5s ease-in-out infinite;
-			display: inline-block;
-		}
+            background: linear-gradient(90deg, #ff6b6b 0%, #feca57 25%, #48dbfb 50%, #0abde3 75%, #ff9ff3 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: colorShift 5s ease-in-out infinite;
+            display: inline-block;
+        }
 
         @keyframes colorShift {
             0% { background-position: 0% 50%; }
@@ -285,103 +284,34 @@
         }
         
         .subtitle {
-			font-size: 22px;
-			color: #00d4ff;
-			margin-bottom: 20px;
-			font-weight: 300;
-			text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-		}
+            font-size: 26px;
+            color: #00d4ff;
+            margin-bottom: 25px;
+            font-weight: 300;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
         
         .tech-stack {
-			display: flex;
-			gap: 10px;
-			flex-wrap: wrap;
-			max-width: 600px;
-			justify-content: flex-end;
-		}
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            max-width: 650px;
+            justify-content: flex-end;
+        }
         
         .tech-badge {
-			padding: 8px 16px;
-			background: rgba(0, 212, 255, 0.1);
-			border: 1px solid #00d4ff;
-			border-radius: 18px;
-			color: #00d4ff;
-			font-size: 13px;
-			font-weight: 600;
-			backdrop-filter: blur(10px);
-			animation: glow 2s ease-in-out infinite;
-			transition: all 0.3s ease;
-		}
-		
-        /* Safe container for right-side content */
-		.banner-content {
-			display: flex;
-			justify-content: flex-end;
-			align-items: center;
-			height: 100%;
-			width: 100%;
-			padding-right: 60px;
-			box-sizing: border-box;
-		}
-
-		/* Text container — prevents overflow */
-		.content-box {
-			max-width: 560px;
-			text-align: right;
-		}
-
-		/* Main title */
-		.main-title {
-			font-size: 42px;
-			font-weight: 700;
-			color: #ffffff;
-			margin-bottom: 12px;
-			line-height: 1.2;
-			letter-spacing: 0.5px;
-			word-wrap: break-word;
-		}
-
-		/* Animated gradient text */
-		.main-title .animated-text {
-			background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #0abde3, #ff9ff3);
-			background-size: 200% 100%;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			animation: colorShift 5s ease-in-out infinite;
-			display: inline-block;
-		}
-
-		/* Subtitle */
-		.subtitle {
-			font-size: 20px;
-			color: #00d4ff;
-			margin-bottom: 16px;
-			font-weight: 300;
-			text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
-		}
-
-		/* Tech badge group */
-		.tech-stack {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
-			justify-content: flex-end;
-			max-width: 560px;
-		}
-
-		/* Each badge */
-		.tech-badge {
-			padding: 6px 14px;
-			background: rgba(0, 212, 255, 0.1);
-			border: 1px solid #00d4ff;
-			border-radius: 16px;
-			color: #00d4ff;
-			font-size: 12px;
-			font-weight: 600;
-			white-space: nowrap;
-			animation: glow 2s ease-in-out infinite;
-		}
-		
+            padding: 10px 18px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 20px;
+            color: #00d4ff;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            animation: glow 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
         .tech-badge:hover {
             background: rgba(0, 212, 255, 0.2);
             transform: translateY(-2px);
@@ -639,26 +569,7 @@
         </div>
         
         <!-- Right Content -->
-        
-		<div class="banner-content">
-		  <div class="content-box">
-			<div class="main-title">
-			  <span class="animated-text">Cloud Native 5G AI/ML Platform</span>
-			</div>
-			<div class="subtitle">Cloud Native Architecture • Microservices</div>
-			<div class="tech-stack">
-			  <div class="tech-badge">Kubernetes</div>
-			  <div class="tech-badge">Kafka</div>
-			  <div class="tech-badge">Keycloak</div>
-			  <div class="tech-badge">Spring Boot</div>
-			  <div class="tech-badge">AWS</div>
-			  <div class="tech-badge">LangChain</div>
-			  <div class="tech-badge">Bedrock</div>
-			  <div class="tech-badge">AI/ML</div>
-			</div>
-		  </div>
-		</div>
-		 <!--<div class="content-left">
+        <div class="content-left">
             <div class="main-title">
                 <span class="animated-text">Cloud Native Architecture Microservices</span>
             </div>
@@ -671,7 +582,7 @@
                 <div class="tech-badge">☁️ Cloud Native</div>
                 <div class="tech-badge">🌐 Network Orchestration</div>
             </div>
-        </div>-->
+        </div>
     </div>
 
     <script>
