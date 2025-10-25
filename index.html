@@ -312,7 +312,76 @@
 			animation: glow 2s ease-in-out infinite;
 			transition: all 0.3s ease;
 		}
-        
+		
+        /* Safe container for right-side content */
+		.banner-content {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			height: 100%;
+			width: 100%;
+			padding-right: 60px;
+			box-sizing: border-box;
+		}
+
+		/* Text container — prevents overflow */
+		.content-box {
+			max-width: 560px;
+			text-align: right;
+		}
+
+		/* Main title */
+		.main-title {
+			font-size: 42px;
+			font-weight: 700;
+			color: #ffffff;
+			margin-bottom: 12px;
+			line-height: 1.2;
+			letter-spacing: 0.5px;
+			word-wrap: break-word;
+		}
+
+		/* Animated gradient text */
+		.main-title .animated-text {
+			background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #0abde3, #ff9ff3);
+			background-size: 200% 100%;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			animation: colorShift 5s ease-in-out infinite;
+			display: inline-block;
+		}
+
+		/* Subtitle */
+		.subtitle {
+			font-size: 20px;
+			color: #00d4ff;
+			margin-bottom: 16px;
+			font-weight: 300;
+			text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+		}
+
+		/* Tech badge group */
+		.tech-stack {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			justify-content: flex-end;
+			max-width: 560px;
+		}
+
+		/* Each badge */
+		.tech-badge {
+			padding: 6px 14px;
+			background: rgba(0, 212, 255, 0.1);
+			border: 1px solid #00d4ff;
+			border-radius: 16px;
+			color: #00d4ff;
+			font-size: 12px;
+			font-weight: 600;
+			white-space: nowrap;
+			animation: glow 2s ease-in-out infinite;
+		}
+		
         .tech-badge:hover {
             background: rgba(0, 212, 255, 0.2);
             transform: translateY(-2px);
@@ -570,7 +639,26 @@
         </div>
         
         <!-- Right Content -->
-        <div class="content-left">
+        
+		<div class="banner-content">
+		  <div class="content-box">
+			<div class="main-title">
+			  <span class="animated-text">Cloud Native 5G AI/ML Platform</span>
+			</div>
+			<div class="subtitle">Cloud Native Architecture • Microservices</div>
+			<div class="tech-stack">
+			  <div class="tech-badge">Kubernetes</div>
+			  <div class="tech-badge">Kafka</div>
+			  <div class="tech-badge">Keycloak</div>
+			  <div class="tech-badge">Spring Boot</div>
+			  <div class="tech-badge">AWS</div>
+			  <div class="tech-badge">LangChain</div>
+			  <div class="tech-badge">Bedrock</div>
+			  <div class="tech-badge">AI/ML</div>
+			</div>
+		  </div>
+		</div>
+		 <!--<div class="content-left">
             <div class="main-title">
                 <span class="animated-text">Cloud Native Architecture Microservices</span>
             </div>
@@ -583,7 +671,7 @@
                 <div class="tech-badge">☁️ Cloud Native</div>
                 <div class="tech-badge">🌐 Network Orchestration</div>
             </div>
-        </div>
+        </div>-->
     </div>
 
     <script>
