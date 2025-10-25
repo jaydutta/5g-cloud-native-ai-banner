@@ -1,779 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkedIn Banner - 5G Cloud Native AI/ML</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
-            background: #000;
-        }
-        
-        .banner {
-            width: 1584px;
-            height: 396px;
-            position: relative;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1d3e 50%, #0f1b35 100%);
-            overflow: hidden;
-        }
-        
-        /* Animated Grid Background */
-        .grid-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 200, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 200, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            opacity: 0.3;
-        }
-        
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-        
-        /* Cloud Shapes in Background */
-        .cloud {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 100px;
-            animation: cloudFloat 30s ease-in-out infinite;
-            filter: blur(40px);
-        }
-        
-        .cloud-1 {
-            width: 400px;
-            height: 150px;
-            top: 10%;
-            left: -100px;
-            animation-delay: 0s;
-        }
-        
-        .cloud-2 {
-            width: 350px;
-            height: 120px;
-            top: 60%;
-            right: -80px;
-            animation-delay: 5s;
-        }
-        
-        .cloud-3 {
-            width: 300px;
-            height: 100px;
-            top: 35%;
-            left: 30%;
-            animation-delay: 10s;
-        }
-        
-        @keyframes cloudFloat {
-            0%, 100% { transform: translateX(0) translateY(0); opacity: 0.3; }
-            25% { transform: translateX(100px) translateY(-20px); opacity: 0.5; }
-            50% { transform: translateX(50px) translateY(20px); opacity: 0.4; }
-            75% { transform: translateX(150px) translateY(-10px); opacity: 0.6; }
-        }
-        
-        /* 5G Text in Background */
-        .bg-text {
-            position: absolute;
-            font-size: 180px;
-            font-weight: 900;
-            opacity: 0.04;
-            color: #00d4ff;
-            z-index: 1;
-            font-family: Arial, sans-serif;
-        }
-        
-        .bg-5g {
-            top: 20%;
-            right: 15%;
-            transform: rotate(-10deg);
-            animation: textPulse 4s ease-in-out infinite;
-        }
-        
-        .bg-ai {
-            bottom: 10%;
-            left: 10%;
-            transform: rotate(5deg);
-            animation: textPulse 4s ease-in-out infinite 2s;
-        }
-        
-        .bg-cloud-text {
-            top: 45%;
-            left: 35%;
-            font-size: 140px;
-            animation: textPulse 4s ease-in-out infinite 1s;
-        }
-        
-        @keyframes textPulse {
-            0%, 100% { opacity: 0.04; transform: scale(1) rotate(-10deg); }
-            50% { opacity: 0.08; transform: scale(1.05) rotate(-10deg); }
-        }
-        
-        /* AI Neural Network Pattern */
-        .neural-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0.15;
-            z-index: 1;
-        }
-        
-        .neural-node {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ff00ff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #ff00ff;
-            animation: neuralPulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes neuralPulse {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-        }
-        
-        .neural-line {
-            position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.3), transparent);
-            animation: neuralFlow 2s linear infinite;
-        }
-        
-        @keyframes neuralFlow {
-            0% { opacity: 0; transform: scaleX(0); }
-            50% { opacity: 1; transform: scaleX(1); }
-            100% { opacity: 0; transform: scaleX(0); }
-        }
-        
-        /* 3D Network Nodes */
-        .network-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            perspective: 1000px;
-            z-index: 5;
-        }
-        
-        .network-node {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #00ffff, #0080ff);
-            box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        .network-node.large {
-            width: 20px;
-            height: 20px;
-        }
-        
-        .network-node.core {
-            background: radial-gradient(circle, #ff00ff, #ff0080);
-            box-shadow: 0 0 30px #ff00ff, 0 0 60px #ff00ff;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) translateZ(0px) scale(1); }
-            50% { transform: translateY(-20px) translateZ(50px) scale(1.2); }
-        }
-        
-        .connection-line {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00ffff, transparent);
-            opacity: 0.4;
-            animation: pulse 2s ease-in-out infinite;
-            transform-origin: left center;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        /* 5G Wave Signals */
-        .wave-signal {
-            position: absolute;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: waveExpand 3s ease-out infinite;
-        }
-        
-        .wave-1 {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            right: 25%;
-            animation-delay: 0s;
-        }
-        
-        .wave-2 {
-            width: 150px;
-            height: 150px;
-            top: 20%;
-            right: 25%;
-            animation-delay: 0.5s;
-        }
-        
-        .wave-3 {
-            width: 200px;
-            height: 200px;
-            top: 20%;
-            right: 25%;
-            animation-delay: 1s;
-        }
-        
-        @keyframes waveExpand {
-            0% { transform: scale(0.5) translate(-50%, -50%); opacity: 1; }
-            100% { transform: scale(1.5) translate(-50%, -50%); opacity: 0; }
-        }
-        
-        /* Right Content Section */
-        
-		.content-left {
-			position: absolute;
-			right: 80px;
-			top: 50%;
-			transform: translateY(-50%);
-			z-index: 10;
-			max-width: 600px;
-			text-align: right;
-		}
-        
-        .main-title {
-			font-size: 46px;
-			font-weight: 700;
-			color: #ffffff;
-			margin-bottom: 15px;
-			letter-spacing: 0.8px;
-			line-height: 1.2;
-		}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>5G Cloud Native AI/ML Banner</title>
+<style>
+/* ========== Base Banner Setup ========== */
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
 
-        .main-title .animated-text {
-			background: linear-gradient(90deg, #ff6b6b 0%, #feca57 25%, #48dbfb 50%, #0abde3 75%, #ff9ff3 100%);
-			background-size: 200% 100%;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-			animation: colorShift 5s ease-in-out infinite;
-			display: inline-block;
-		}
+.banner {
+  position: relative;
+  width: 1584px;
+  height: 396px;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 50%, #001f3f, #000);
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
 
-        @keyframes colorShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+/* ===== Top Row: Animated Floating Icons ===== */
+.icon-strip {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  animation: floatIcons 12s linear infinite;
+  opacity: 0.9;
+}
 
-        @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)); }
-            50% { filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.8)); }
-        }
-        
-        .subtitle {
-			font-size: 22px;
-			color: #00d4ff;
-			margin-bottom: 20px;
-			font-weight: 300;
-			text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-		}
-        
-        .tech-stack {
-			display: flex;
-			gap: 10px;
-			flex-wrap: wrap;
-			max-width: 600px;
-			justify-content: flex-end;
-		}
-        
-        .tech-badge {
-			padding: 8px 16px;
-			background: rgba(0, 212, 255, 0.1);
-			border: 1px solid #00d4ff;
-			border-radius: 18px;
-			color: #00d4ff;
-			font-size: 13px;
-			font-weight: 600;
-			backdrop-filter: blur(10px);
-			animation: glow 2s ease-in-out infinite;
-			transition: all 0.3s ease;
-		}
-		
-        /* Safe container for right-side content */
-		.banner-content {
-			display: flex;
-			justify-content: flex-end;
-			align-items: center;
-			height: 100%;
-			width: 100%;
-			padding-right: 60px;
-			box-sizing: border-box;
-		}
+.icon-strip img {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.7));
+}
 
-		/* Text container — prevents overflow */
-		.content-box {
-			max-width: 560px;
-			text-align: right;
-		}
+@keyframes floatIcons {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-40px); }
+  100% { transform: translateX(0); }
+}
 
-		/* Main title */
-		.main-title {
-			font-size: 42px;
-			font-weight: 700;
-			color: #ffffff;
-			margin-bottom: 12px;
-			line-height: 1.2;
-			letter-spacing: 0.5px;
-			word-wrap: break-word;
-		}
+/* ===== Left-side Graphic (5G Node / Cloud) ===== */
+.left-graphic {
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
 
-		/* Animated gradient text */
-		.main-title .animated-text {
-			background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #0abde3, #ff9ff3);
-			background-size: 200% 100%;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			animation: colorShift 5s ease-in-out infinite;
-			display: inline-block;
-		}
+.left-graphic img {
+  width: 220px;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+}
 
-		/* Subtitle */
-		.subtitle {
-			font-size: 20px;
-			color: #00d4ff;
-			margin-bottom: 16px;
-			font-weight: 300;
-			text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
-		}
+/* ===== Right-side Content (No Clipping) ===== */
+.banner-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding-right: 60px;
+  box-sizing: border-box;
+}
 
-		/* Tech badge group */
-		.tech-stack {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
-			justify-content: flex-end;
-			max-width: 560px;
-		}
+.content-box {
+  max-width: 560px;
+  text-align: right;
+}
 
-		/* Each badge */
-		.tech-badge {
-			padding: 6px 14px;
-			background: rgba(0, 212, 255, 0.1);
-			border: 1px solid #00d4ff;
-			border-radius: 16px;
-			color: #00d4ff;
-			font-size: 12px;
-			font-weight: 600;
-			white-space: nowrap;
-			animation: glow 2s ease-in-out infinite;
-		}
-		
-        .tech-badge:hover {
-            background: rgba(0, 212, 255, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(0, 212, 255, 0.5); }
-            50% { box-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
-        }
-        
-        /* Left Icons Section */
-        .icons-section {
-            position: absolute;
-            left: 80px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-        }
-        
-        .icon-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
-        }
-        
-        .tech-icon {
-            width: 120px;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 212, 255, 0.05);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tech-icon::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .tech-icon:hover {
-            transform: translateY(-10px) scale(1.08);
-            border-color: #00d4ff;
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.5);
-            background: rgba(0, 212, 255, 0.15);
-        }
-        
-        .icon-symbol {
-            font-size: 50px;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
-            position: relative;
-            z-index: 1;
-        }
-        
-        .icon-label {
-            font-size: 13px;
-            color: #00d4ff;
-            font-weight: 700;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            letter-spacing: 1px;
-        }
-        
-        /* Particles */
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: #00ffff;
-            border-radius: 50%;
-            opacity: 0.6;
-            box-shadow: 0 0 5px #00ffff;
-            animation: particleFloat 8s linear infinite;
-        }
-        
-        @keyframes particleFloat {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-400px) translateX(100px); opacity: 0; }
-        }
-        
-        /* 5G Wave Effect */
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.1));
-            animation: wave 3s ease-in-out infinite;
-        }
-        
-        @keyframes wave {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        /* Accent Lines */
-        .accent-line {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-            animation: lineMove 3s ease-in-out infinite;
-            z-index: 3;
-        }
-        
-        @keyframes lineMove {
-            0%, 100% { width: 0; opacity: 0; left: 0; }
-            50% { width: 300px; opacity: 1; }
-        }
-        
-        /* Data Flow Lines */
-        .data-flow {
-            position: absolute;
-            width: 2px;
-            height: 100px;
-            background: linear-gradient(180deg, transparent, #00ffff, transparent);
-            animation: dataFlow 4s linear infinite;
-            box-shadow: 0 0 10px #00ffff;
-        }
-        
-        @keyframes dataFlow {
-            0% { transform: translateY(-100px); opacity: 0; }
-            20% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { transform: translateY(500px); opacity: 0; }
-        }
+/* Main Title */
+.main-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
 
-        /* Glowing Orbs */
-        .glow-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            animation: orbPulse 5s ease-in-out infinite;
-        }
+.main-title .animated-text {
+  background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #0abde3, #ff9ff3);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorShift 5s ease-in-out infinite;
+  display: inline-block;
+}
 
-        .orb-1 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
-            top: -100px;
-            right: 300px;
-        }
+/* Subtitle */
+.subtitle {
+  font-size: 20px;
+  color: #00d4ff;
+  margin-bottom: 16px;
+  font-weight: 300;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
 
-        .orb-2 {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(255, 0, 255, 0.2) 0%, transparent 70%);
-            bottom: -80px;
-            left: 200px;
-            animation-delay: 2.5s;
-        }
+/* Tech Stack Badges */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  max-width: 560px;
+}
 
-        @keyframes orbPulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.3); opacity: 0.5; }
-        }
-    </style>
+.tech-badge {
+  padding: 6px 14px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid #00d4ff;
+  border-radius: 16px;
+  color: #00d4ff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Animation Effects */
+@keyframes colorShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px #00d4ff; }
+  50% { box-shadow: 0 0 20px #00d4ff; }
+}
+</style>
 </head>
 <body>
-    <div class="banner">
-        <!-- Animated Grid Background -->
-        <div class="grid-bg"></div>
-        
-        <!-- Glowing Orbs -->
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        
-        <!-- Cloud Shapes -->
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
-        <div class="cloud cloud-3"></div>
-        
-        <!-- Background Text -->
-        <div class="bg-text bg-5g">5G</div>
-        <div class="bg-text bg-ai">AI</div>
-        <div class="bg-text bg-cloud-text">CLOUD</div>
-        
-        <!-- AI Neural Network -->
-        <div class="neural-bg" id="neuralBg"></div>
-        
-        <!-- 5G Wave Signals -->
-        <div class="wave-signal wave-1"></div>
-        <div class="wave-signal wave-2"></div>
-        <div class="wave-signal wave-3"></div>
-        
-        <!-- Wave Effect -->
-        <div class="wave"></div>
-        
-        <!-- Network Container -->
-        <div class="network-container" id="networkContainer"></div>
-        
-        <!-- Particles -->
-        <div id="particlesContainer"></div>
-        
-        <!-- Data Flow Lines -->
-        <div class="data-flow" style="left: 15%; animation-delay: 0s;"></div>
-        <div class="data-flow" style="left: 35%; animation-delay: 1.5s;"></div>
-        <div class="data-flow" style="left: 55%; animation-delay: 2.5s;"></div>
-        <div class="data-flow" style="left: 75%; animation-delay: 0.8s;"></div>
-        <div class="data-flow" style="left: 90%; animation-delay: 3s;"></div>
-        
-        <!-- Accent Lines -->
-        <div class="accent-line" style="top: 20%; left: 10%;"></div>
-        <div class="accent-line" style="bottom: 30%; right: 15%; animation-delay: 1.5s;"></div>
-        
-        <!-- Left Icons -->
-        <div class="icons-section">
-            <div class="icon-grid">
-                <div class="tech-icon">
-                    <div class="icon-symbol">☁️</div>
-                    <div class="icon-label">CLOUD</div>
-                </div>
-                <div class="tech-icon">
-                    <div class="icon-symbol">🤖</div>
-                    <div class="icon-label">AI/ML</div>
-                </div>
-                <div class="tech-icon">
-                    <div class="icon-symbol">📡</div>
-                    <div class="icon-label">5G CORE</div>
-                </div>
-                <div class="tech-icon">
-                    <div class="icon-symbol">⚙️</div>
-                    <div class="icon-label">NMS</div>
-                </div>
-                <div class="tech-icon">
-                    <div class="icon-symbol">🔧</div>
-                    <div class="icon-label">EMS</div>
-                </div>
-                <div class="tech-icon">
-                    <div class="icon-symbol">🌐</div>
-                    <div class="icon-label">NETWORK</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Right Content -->
-        
-		<div class="banner-content">
-		  <div class="content-box">
-			<div class="main-title">
-			  <span class="animated-text">Cloud Native 5G AI/ML Platform</span>
-			</div>
-			<div class="subtitle">Cloud Native Architecture • Microservices</div>
-			<div class="tech-stack">
-			  <div class="tech-badge">Kubernetes</div>
-			  <div class="tech-badge">Kafka</div>
-			  <div class="tech-badge">Keycloak</div>
-			  <div class="tech-badge">Spring Boot</div>
-			  <div class="tech-badge">AWS</div>
-			  <div class="tech-badge">LangChain</div>
-			  <div class="tech-badge">Bedrock</div>
-			  <div class="tech-badge">AI/ML</div>
-			</div>
-		  </div>
-		</div>
-		 <!--<div class="content-left">
-            <div class="main-title">
-                <span class="animated-text">Cloud Native Architecture Microservices</span>
-            </div>
-            <div class="subtitle">5G Core • NMS/EMS • AI/ML Integration</div>
-            <div class="tech-stack">
-                <div class="tech-badge">☸️ Kubernetes</div>
-                <div class="tech-badge">📡 5G SA/NSA</div>
-                <div class="tech-badge">🤖 Machine Learning</div>
-                <div class="tech-badge">🔧 Microservices</div>
-                <div class="tech-badge">☁️ Cloud Native</div>
-                <div class="tech-badge">🌐 Network Orchestration</div>
-            </div>
-        </div>-->
+
+<!-- ======= Banner Container ======= -->
+<div class="banner">
+
+  <!-- 🔹 Floating Icons Top Row -->
+  <div class="icon-strip">
+    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721240.png" alt="Cloud" />
+    <img src="https://cdn-icons-png.flaticon.com/512/1022/1022321.png" alt="AI" />
+    <img src="https://cdn-icons-png.flaticon.com/512/3601/3601654.png" alt="5G" />
+    <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="Network" />
+  </div>
+
+  <!-- 🔹 Left-side Graphic -->
+  <div class="left-graphic">
+    <img src="https://cdn-icons-png.flaticon.com/512/3601/3601654.png" alt="5G Tower" />
+  </div>
+
+  <!-- 🔹 Right-side Text & Tech Badges -->
+  <div class="banner-content">
+    <div class="content-box">
+      <div class="main-title">
+        <span class="animated-text">Cloud Native 5G AI/ML Platform</span>
+      </div>
+      <div class="subtitle">Cloud Native Architecture • Microservices</div>
+      <div class="tech-stack">
+        <div class="tech-badge">Kubernetes</div>
+        <div class="tech-badge">Kafka</div>
+        <div class="tech-badge">Keycloak</div>
+        <div class="tech-badge">Spring Boot</div>
+        <div class="tech-badge">AWS</div>
+        <div class="tech-badge">LangChain</div>
+        <div class="tech-badge">Bedrock</div>
+        <div class="tech-badge">AI/ML</div>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Create Neural Network Pattern
-        const neuralBg = document.getElementById('neuralBg');
-        const neuralNodes = [];
-        
-        for (let i = 0; i < 15; i++) {
-            const node = document.createElement('div');
-            node.className = 'neural-node';
-            node.style.left = Math.random() * 100 + '%';
-            node.style.top = Math.random() * 100 + '%';
-            node.style.animationDelay = Math.random() * 3 + 's';
-            neuralBg.appendChild(node);
-            neuralNodes.push({
-                x: parseFloat(node.style.left),
-                y: parseFloat(node.style.top),
-                element: node
-            });
-        }
+</div>
 
-        // Create Neural Lines
-        for (let i = 0; i < neuralNodes.length; i++) {
-            for (let j = i + 1; j < neuralNodes.length; j++) {
-                const dx = neuralNodes[j].x - neuralNodes[i].x;
-                const dy = neuralNodes[j].y - neuralNodes[i].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 40) {
-                    const line = document.createElement('div');
-                    line.className = 'neural-line';
-                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                    line.style.width = distance + '%';
-                    line.style.left = neuralNodes[i].x + '%';
-                    line.style.top = neuralNodes[i].y + '%';
-                    line.style.transform = `rotate(${angle}deg)`;
-                    line.style.animationDelay = Math.random() * 2 + 's';
-                    neuralBg.appendChild(line);
-                }
-            }
-        }
-
-        // Create 3D Network Nodes
-        const networkContainer = document.getElementById('networkContainer');
-        const nodes = [];
-        
-        for (let i = 0; i < 25; i++) {
-            const node = document.createElement('div');
-            node.className = 'network-node';
-            
-            if (i % 5 === 0) node.classList.add('large');
-            if (i % 7 === 0) node.classList.add('core');
-            
-            const x = Math.random() * 90 + 5;
-            const y = Math.random() * 80 + 10;
-            
-            node.style.left = x + '%';
-            node.style.top = y + '%';
-            node.style.animationDelay = Math.random() * 4 + 's';
-            node.style.animationDuration = (3 + Math.random() * 2) + 's';
-            
-            networkContainer.appendChild(node);
-            nodes.push({ x, y, element: node });
-        }
-
-        // Create Connection Lines
-        for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-                const dx = nodes[j].x - nodes[i].x;
-                const dy = nodes[j].y - nodes[i].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 30) {
-                    const line = document.createElement('div');
-                    line.className = 'connection-line';
-                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                    line.style.width = distance + '%';
-                    line.style.left = nodes[i].x + '%';
-                    line.style.top = nodes[i].y + '%';
-                    line.style.transform = `rotate(${angle}deg)`;
-                    line.style.animationDelay = Math.random() * 2 + 's';
-                    networkContainer.appendChild(line);
-                }
-            }
-        }
-
-        // Create Particles
-        const particlesContainer = document.getElementById('particlesContainer');
-        for (let i = 0; i < 40; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = '100%';
-            particle.style.animationDelay = Math.random() * 8 + 's';
-            particle.style.animationDuration = (6 + Math.random() * 4) + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Download Instructions
-        console.log('%c🎨 LinkedIn Banner Ready!', 'font-size: 20px; color: #00d4ff; font-weight: bold;');
-        console.log('%cTo save: Right-click on the banner → Save image as...', 'font-size: 14px; color: #ffffff;');
-        console.log('%cOr use browser screenshot tools to capture the exact dimensions (1584x396px)', 'font-size: 14px; color: #aaa;');
-    </script>
 </body>
 </html>
